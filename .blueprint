@@ -1,0 +1,14 @@
+created:
+    - database/migrations/2020_05_06_151452_create_promotions_table.php
+    - app/Promotion.php
+    - database/factories/PromotionFactory.php
+models:
+    Category: { name: string, slug: 'string unique' }
+    Shop: { name: string, slug: 'string unique' }
+    Product: { uuid: 'string unique', category_id: 'id index', shop_id: 'id index', name: string, description: 'string nullable', slug: 'string unqiue', image: 'string nullable', price: 'decimal:8,2', discount: 'decimal:8,2 nullable', available: 'boolean default:true' }
+    Order: { user_id: 'id index', orderno: 'string unique', address: string, city: string, pincode: string, phone: 'string nullable', amount: 'decimal:8,2', discount_amount: 'decimal:8,2', net_total: 'decimal:8,2', status: 'string default:''pending''', payment: string, payment_id: string, products: json }
+    Coupon: { uuid: 'string unique', name: 'string unique', description: 'string nullable', price: 'decimal:8,2', start: date, end: date, active: boolean }
+    Offer: { product_id: 'id index' }
+    Address: { user_id: 'id index', address: string, city: string, pincode: string, phone: 'string nullable', default: 'boolean default:false' }
+    Otp: { code: string, active: 'boolean default:true' }
+    Promotion: { description: string, link: string, active: 'boolean default:true' }
